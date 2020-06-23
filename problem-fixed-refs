@@ -1,0 +1,16 @@
+Description:
+    本文档用于记录网站前端开发过程中遇到的问题以及修复方案链接。
+
+day01
+    P1:首页背景图无法全屏展示，边界留有空白的修复
+    A1:--->https://blog.csdn.net/m759083952/article/details/85093970
+
+    P2:背景图上添加其他标签
+    A2:--->https://zhidao.baidu.com/question/2011280656627212028.html
+
+day02
+    P1:div标签元素在页面布局中的定位问题？
+    A2:--->https://www.jb51.net/web/102829.html
+
+    P2:H5中新增nav？
+    A2:--->nav属于导航标签，独立行级元素
