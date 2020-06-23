@@ -1,19 +1,30 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Homepage from '../views/zypw/homepage/Homepage.vue'
-import Pictures from '../views/zypw/pictures/Pictures.vue'
-import Profile from '../views/zypw/profile/Profile.vue'
-import Vlogs from '../views/zypw/v-logs/Vlogs.vue'
-import Article from '../views/xlyspw/article/Article.vue'
-import Tecs from '../views/xlyspw/tecs/Tecs.vue'
+// import Homepage from '../views/zypw/homepage/Homepage.vue'
+// import Pictures from '../views/zypw/pictures/Pictures.vue'
+// import Profile from '../views/zypw/profile/Profile.vue'
+// import Vlogs from '../views/zypw/v-logs/Vlogs.vue'
+// import Article from '../views/xlyspw/article/Article.vue'
+// import Tecs from '../views/xlyspw/tecs/Tecs.vue'
+// import App from '../App'
+// import HomepageDetail from "../components/content/HomepageDetail"
+//懒加载模式引入
+const Homepage=()=>import('../views/zypw/homepage/Homepage.vue')
+const Pictures=()=>import('../views/zypw/pictures/Pictures.vue')
+const Profile=()=>import('../views/zypw/profile/Profile.vue')
+const Vlogs=()=>import('../views/zypw/v-logs/Vlogs.vue')
+const Article=()=>import('../views/xlyspw/article/Article.vue')
+const Tecs=()=>import('../views/xlyspw/tecs/Tecs.vue')
+const App=()=>import('../App')
+const HomepageDetail=()=>import('../components/content/HomepageDetail')
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    name: 'Homepage',
-    component: Homepage
+    name: 'App',
+    component: App
   },
   {
     path: '/homepage',
@@ -48,6 +59,11 @@ const routes = [
     path: '/tecs',
     name: 'Tecs',
     component: Tecs
+  },
+  {
+    path: '/homepageDetail/:testData',
+    name: 'HomepageDetail',
+    component: HomepageDetail
   }
 ]
 

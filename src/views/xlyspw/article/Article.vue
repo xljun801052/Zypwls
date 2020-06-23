@@ -1,14 +1,15 @@
 <template>
     <div>
-        这是article.vue界面
+
     </div>
 </template>
 
 <script>
-
-export default {
-    name:'article'
-
-}
-
+    export default {
+        name: "Article"
+    }
 </script>
+
+<style scoped>
+
+</style>
