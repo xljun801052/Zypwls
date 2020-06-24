@@ -21,3 +21,13 @@ day03
 
     P2：点击不同的内容标题，跳转到不同内容的详情页？如何实现
     A2：--->路由跳转吧，参数的话使用路由间见参数传递
+
+day04
+    P1:响应式布局中如何动态适应
+    A1：--->https://blog.csdn.net/weixin_36185028/article/details/82946803
+
+    P2:设置element-ui中icon的大小
+    A2：--->https://blog.csdn.net/weixin_41070391/article/details/90176893
+
+    P3:总体布局行列模块设置参考文档
+    A3：--->https://blog.csdn.net/qq_38098125/article/details/90698439
