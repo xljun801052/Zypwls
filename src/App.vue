@@ -20,7 +20,7 @@
 
 <style>
 #nav {
-  /*background-image: url("./assets/imgs/bgimg2.jpg");*/
+  background-image: url("./assets/imgs/bgimg2.jpg");
   background-size: cover; /*设置背景图充满屏幕*/
   background-repeat: no-repeat; /*设置背景图不重复*/
   position: fixed;

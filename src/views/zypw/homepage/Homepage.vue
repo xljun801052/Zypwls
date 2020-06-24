@@ -72,7 +72,7 @@ export default {
 
 <style>
   #homepage{
-    /*background-image: url("../../../assets/imgs/bgimg.jpg");*/
+    background-image: url("../../../assets/imgs/bgimg.jpg");
     background-size: cover; /*设置背景图充满屏幕*/
     background-repeat: no-repeat; /*设置背景图不重复*/
     position: fixed;
