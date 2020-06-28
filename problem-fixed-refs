@@ -36,3 +36,6 @@ day05
     P1:解決element-ui自定义图标
     A1：--->https://www.jianshu.com/p/32251dcf6fca
         --->https://www.cnblogs.com/luoxuemei/p/12370595.html
+
+    P2:解决自定义图标的大小
+    A2：--->在导入的iconfont.css中设置font-size属性大小即可
