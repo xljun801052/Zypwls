@@ -12,8 +12,8 @@
         </div>
         <div class="header-col3">
             <i id="qq" class="el-icon-setting">2074863066</i>
-            <i id="wechat" class="el-icon-setting"></i>
-            <i id="telephone" class="el-icon-setting">设置</i>
+            <i id="wechat" class="el-icon-setting">zy1614735214</i>
+            <i id="telephone" class="el-icon-setting">17317673034</i>
             <i id="settings" class="el-icon-setting">设置</i>
         </div>
       </div>
