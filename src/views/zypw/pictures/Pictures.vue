@@ -16,9 +16,9 @@
         <button style="vertical-align: middle;" @click="nxt" v-show="index<imgArr.length-1">下一张</button>
       </div>-->
       <div id="photo-category" class="photo-info">
-        <div>日常生活1</div>
-        <div>日常生活2</div>
-        <div>日常生活3</div>
+        <div><el-button>日常生活1</el-button></div>
+        <div><el-button>日常生活1</el-button></div>
+        <div><el-button>日常生活1</el-button></div>
       </div>
       <div id="photo-serial" class="photo-info">
         <el-table>
@@ -69,14 +69,17 @@
   }
 
   .photo-info {
-    /*width: 500px;*/
-    /*height: 800px;*/
+    width: 500px;
+    height: 400px;
+    border: 2px deeppink solid;
   }
 
   /*左侧列：照片分类*/
   #photo-category {
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
   }
 
 </style>

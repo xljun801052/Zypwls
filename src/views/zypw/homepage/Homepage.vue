@@ -1,6 +1,7 @@
 <template>
   <div id="homepage">
     <div id="homepage-title" >这是homepage.vue界面,以下是内容</div>
+
     <div>
       <!--这个遍历数组中的额对象的属性和属性值-->
       <Homepage id="homepage-content" v-for="(item,index) in all" :key="index">
