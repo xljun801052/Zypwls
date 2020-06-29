@@ -29,13 +29,15 @@
             :disabled="false">
           </el-input>
         </div>
-        <div id="content">
-          <router-link to="/homepage">homepage</router-link>
-          <router-link to="/pictures">photos</router-link>
-          <router-link to="/vlogs">v-log</router-link>
-          <router-link to="/profile">profile</router-link>
-          <router-view/>
-        </div>
+      </div>
+      <div id="content">
+        <router-link to="/homepage" tag="el-button">homepage</router-link>
+        <router-link to="/pictures" tag="el-button">photos</router-link>
+        <router-link to="/vlogs" tag="el-button">v-log</router-link>
+        <router-link to="/profile" tag="el-button">profile</router-link>
+      </div>
+      <div>
+        <router-view id="content-view"></router-view>
       </div>
     </div>
   </div>
@@ -95,18 +97,24 @@
   }
 
   /*content内容模块：上下分布*/
-  #content{
+  #content {
     display: flex;
     flex-direction: row;
-    justify-content:space-around ;
+    justify-content: space-around;
 
   }
 
+  #content-view{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
   /*element-ui的icon设置大小是需要通过设置父盒子的font-size属性*/
- /*#search {
-    font-size: 50px;
-    margin-top: 20px;
-  }*/
+  /*#search {
+     font-size: 50px;
+     margin-top: 20px;
+   }*/
 
   /*#header {
     !*background-image: url("./assets/imgs/bgimg2.jpg");*!

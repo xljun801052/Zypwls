@@ -39,3 +39,9 @@ day05
 
     P2:解决自定义图标的大小
     A2：--->在导入的iconfont.css中设置font-size属性大小即可
+
+day06
+    P1:单页面和多页面的区别？
+    A1：--->https://www.cnblogs.com/yunyea/p/8824178.html
+    P2：flex-direction在pictures模块中不起作用，但是flex-flow中就可以起作用？
+    A2：--->
