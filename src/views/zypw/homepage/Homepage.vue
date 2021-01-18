@@ -1,21 +1,23 @@
 <template>
-  <div id="homepage">
-    <div id="homepage-title" >这是homepage.vue界面,以下是内容</div>
+  <div>
+    <div id="homepage">
+      <div id="homepage-title">张钰的个人主页~~</div>
 
-    <div>
-      <!--这个遍历数组中的额对象的属性和属性值-->
-      <Homepage id="homepage-content" v-for="(item,index) in all" :key="index">
-        <!--这里需要使用路由跳转时参数传递知识点进行解决，父子组件通讯以及父子组件访问貌似适合用-->
-        <router-link class="title" :to='"/homepageDetail/"+testData' tag="button" @click="showContentDetails">
-          {{item.title}}
-        </router-link>
-        <br>
-        <div class="abstract">分类:{{index+1}}||标签：{{item.tag}}||发布于:{{item.time}}||阅读数:{{item.readTimes}}</div>
-        <br>
-        <div class="contentAbstract">
-          {{item.content}}
-        </div>
-      </Homepage>
+      <div>
+        <!--这个遍历数组中的额对象的属性和属性值-->
+        <Homepage id="homepage-content" v-for="(item,index) in all" :key="index">
+          <!--这里需要使用路由跳转时参数传递知识点进行解决，父子组件通讯以及父子组件访问貌似适合用-->
+          <router-link class="title" :to='"/homepageDetail/"+testData' tag="button" @click="showContentDetails">
+            {{item.title}}
+          </router-link>
+          <br>
+          <div class="abstract">分类:{{index+1}}||标签：{{item.tag}}||发布于:{{item.time}}||阅读数:{{item.readTimes}}</div>
+          <br>
+          <div class="contentAbstract">
+            {{item.content}}
+          </div>
+        </Homepage>
+      </div>
     </div>
   </div>
 </template>
@@ -76,12 +78,12 @@
 </script>
 
 <style>
-  #homepage{
-    background-image: url("../../../assets/imgs/bgimg.jpg");
+  #homepage {
+    /*background-image: url("../../../assets/imgs/background/bgimg3.jpg");*/
     background-size: cover; /*设置背景图充满屏幕*/
     background-repeat: no-repeat; /*设置背景图不重复*/
     position: fixed;
-    height: 100%;/*在Y轴上显示的部分占图片总体百分比*/
+    height: 100%; /*在Y轴上显示的部分占图片总体百分比*/
     width: 100%; /*在X轴上显示的部分占图片总体百分比*/
     top: 0px; /*设置与父级元素顶部的距离:也就是顶对齐*/
     left: 0px; /*设置与父级元素左边的距离:也就是左对齐*/

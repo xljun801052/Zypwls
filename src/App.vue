@@ -1,10 +1,10 @@
 <template>
   <div id="app">
     <div id="container">
-      <div id="header">
-        <!--gutter属性来调整布局之间的宽度---分栏间隔,即水平方向的列距离-->
+      <!--<div id="header">
+        &lt;!&ndash;gutter属性来调整布局之间的宽度-&#45;&#45;分栏间隔,即水平方向的列距离&ndash;&gt;
         <div class="header-col1">
-          <el-avatar :size="200" :src="bgimg"></el-avatar><!--./assets/imgs/bgimg2.jpg-->
+          <el-avatar :size="200" :src="~assets/img/bgimg1.jpg"></el-avatar>&lt;!&ndash;./assets/imgs/bgimg2.jpg&ndash;&gt;
         </div>
         <div class="header-col2">
           <div class="grid-content bg-purple-light">Motto</div>
@@ -15,10 +15,10 @@
           <i id="wechat" class="iconfont icon-zypw-weixin">zy1614735214</i>
           <i id="telephone" class="iconfont icon-zypw-iPhoneX">17317673034</i>
           <i id="settings" class="el-icon-setting">设置</i>
-        </div>
+        </div>-->
       </div>
       <div id="body">
-        <div id="search">
+        <!--<div id="search">
           <el-input
             id="searchInput"
             style="width: 800px; height: 50px;margin-left: 650px;margin-top: 50px"
@@ -28,19 +28,20 @@
             v-model="input"
             :disabled="false">
           </el-input>
-        </div>
+        </div>-->
       </div>
-      <div id="content">
+      <!--<div id="content">
+        <router-link to="/" tag="el-button">登录</router-link>
         <router-link to="/homepage" tag="el-button">homepage</router-link>
         <router-link to="/pictures" tag="el-button">photos</router-link>
         <router-link to="/vlogs" tag="el-button">v-log</router-link>
         <router-link to="/profile" tag="el-button">profile</router-link>
-      </div>
+      </div>-->
       <div>
+        <!--router-view会替换掉展示组件的第一层根标签-->
         <router-view id="content-view"></router-view>
       </div>
     </div>
-  </div>
 </template>
 
 <script>
@@ -56,7 +57,6 @@
 </script>
 
 <style>
-
   /*整体布局：上下*/
   #container {
     display: flex;
@@ -109,24 +109,4 @@
     flex-direction: column;
     justify-content: center;
   }
-
-  /*element-ui的icon设置大小是需要通过设置父盒子的font-size属性*/
-  /*#search {
-     font-size: 50px;
-     margin-top: 20px;
-   }*/
-
-  /*#header {
-    !*background-image: url("./assets/imgs/bgimg2.jpg");*!
-    background-size: cover; !*设置背景图充满屏幕*!
-    background-repeat: no-repeat; !*设置背景图不重复*!
-    position: fixed;
-    height: 100%; !*在Y轴上显示的部分占图片总体百分比*!
-    width: 100%; !*在X轴上显示的部分占图片总体百分比*!
-    top: 0px; !*设置与父级元素顶部的距离:也就是顶对齐*!
-    left: 0px; !*设置与父级元素左边的距离:也就是左对齐*!
-
-    margin-bottom: 0px;
-  }*/
-
 </style>

@@ -9,6 +9,7 @@ import VueRouter from 'vue-router'
 // import App from '../App'
 // import HomepageDetail from "../components/content/HomepageDetail"
 //懒加载模式引入
+const Login=()=>import('../views/zypw/login/Login.vue')
 const Homepage=()=>import('../views/zypw/homepage/Homepage.vue')
 const Pictures=()=>import('../views/zypw/pictures/Pictures.vue')
 const Profile=()=>import('../views/zypw/profile/Profile.vue')
@@ -23,8 +24,8 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    name: 'App',
-    component: App
+    name: 'Login',
+    component: Login
   },
   {
     path: '/homepage',

@@ -119,7 +119,7 @@
     height: 300px;
     border: 1px deepskyblue dashed;
     margin: 15px 20px 50px 20px;
-    background-image: url("../../../assets/imgs/yasuo.jpg");
+    background-image: url("../../../assets/imgs/info/yasuo.jpg");
     background-size: contain;
   }
 
