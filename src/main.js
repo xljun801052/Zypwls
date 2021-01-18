@@ -11,8 +11,6 @@ import store from './store'
 import ViewUI from "view-design"
 import "view-design/dist/styles/iview.css"
 
-import  './assets/icons/icon-zypwls/iconfont.css'
-
 // Vue.use(ElementUI);
 //此处使用的是基本的组件，没有对iview进行全局的配置，如果需要的话可以在这里修改进行全局配置
 Vue.use(ViewUI);
