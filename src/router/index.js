@@ -16,8 +16,7 @@ const Profile=()=>import('../views/zypw/profile/Profile.vue')
 const Vlogs=()=>import('../views/zypw/v-logs/Vlogs.vue')
 const Article=()=>import('../views/xlyspw/article/Article.vue')
 const Tecs=()=>import('../views/xlyspw/tecs/Tecs.vue')
-const App=()=>import('../App')
-const HomepageDetail=()=>import('../components/content/HomepageDetail')
+const ArticleDetail=()=>import('../views/zypw/homepage/childComps/ArticleDetail')
 
 Vue.use(VueRouter)
 
@@ -62,10 +61,11 @@ const routes = [
     component: Tecs
   },
   {
-    path: '/homepageDetail/:testData',
-    name: 'HomepageDetail',
-    component: HomepageDetail
-  }
+    path: '/article_detail/:id',
+    name: 'ArticleDetail',
+    component: ArticleDetail
+  },
+
 ]
 
 

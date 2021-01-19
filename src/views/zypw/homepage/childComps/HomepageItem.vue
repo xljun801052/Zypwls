@@ -18,7 +18,7 @@
     <!--帖子内容信息-->
     <div>
       <div class="contentAbstract">{{ item.content }}</div>
-      <div class="readMore"><a>阅读更多</a></div>
+      <div class="readMore"><a href="javascript:void(0);" @click="showContentDetails(item.id)">阅读更多</a></div>
     </div>
 
     <!---->
@@ -36,6 +36,12 @@
         },
       },
     },
+    methods:{
+      // 展示文章详情内容
+      showContentDetails(arti_id) {
+        this.$router.push("/article_detail/"+arti_id)
+      },
+    }
   };
 </script>
 

@@ -15,6 +15,7 @@
             v-for="(item, index) in allPosts"
             :key="index"
             :item="item"
+            @click.native="showContentDetails"
           >
           </HomepageItem>
         </div>
@@ -167,8 +168,7 @@
       };
     },
     methods: {
-      showContentDetails() {
-      },
+      
     },
     created() {
       // 组件创建的时候去请求数据，保存在data中
