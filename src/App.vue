@@ -2,11 +2,11 @@
   <div id="app">
     <div id="header">
       <div id="navbar_img">
-        <img src="~assets/imgs/theme/tutu.png" alt="404" />
+        <img src="~assets/imgs/theme/tutu.png" alt="404"/>
       </div>
       <div id="navbar_motto">
         <span
-          >请看我头戴簪花,一路走来一路盛开, 频频遗漏一些,又深陷风霜雨雪的感动...
+        >请看我头戴簪花,一路走来一路盛开, 频频遗漏一些,又深陷风霜雨雪的感动...
         </span>
       </div>
       <!-- <Divider /> -->
@@ -22,6 +22,22 @@
         </div> -->
     </div>
     <div id="body">
+      <div id="narbar_link">
+        <!--        <router-link to="/login">登录</router-link>-->
+        <div class="link_content">
+          <img src="~assets/imgs/emotions/happy.png">
+          <router-link to="/homepage" class="module_link">随笔小札</router-link>
+        </div>
+        <div class="link_content">
+          <img src="~assets/imgs/emotions/heihei.png">
+          <router-link to="/pictures" class="module_link">Pic记录</router-link>
+        </div>
+        <div class="link_content">
+          <img src="~assets/imgs/emotions/illumute.png">
+          <router-link to="/vlogs" class="module_link">v-log生活</router-link>
+        </div>
+        <!--        <router-link to="/profile"></router-link>-->
+      </div>
       <div>
         <!--router-view会替换掉展示组件的第一层根标签-->
         <router-view id="content-view"></router-view>
@@ -38,53 +54,94 @@
           </el-input>
         </div>-->
     </div>
-    <!--<div id="content">
-        <router-link to="/" tag="el-button">登录</router-link>
-        <router-link to="/homepage" tag="el-button">homepage</router-link>
-        <router-link to="/pictures" tag="el-button">photos</router-link>
-        <router-link to="/vlogs" tag="el-button">v-log</router-link>
-        <router-link to="/profile" tag="el-button">profile</router-link>
-      </div>-->
   </div>
 </template>
 
 <script>
-export default {
-  name: "App",
-  data() {
-    return {};
-  },
-};
+  export default {
+    name: "App",
+    data() {
+      return {};
+    },
+    created() {
+
+    }
+  };
 </script>
 
 <style scoped>
-#app {
-  position: relative;
-  height: 100vh;
-  width: 100%;
-  background-image: url("~@/assets/imgs/background/bgimg2.jpg"); /*css中使用别名'~@'*/
-  background-size: cover; /*设置背景图充满屏幕*/
-  background-repeat: no-repeat; /*设置背景图不重复*/
-}
+  #app {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    background-image: url("~@/assets/imgs/background/bgimg2.jpg"); /*css中使用别名'~@'*/
+    background-size: cover; /*设置背景图充满屏幕*/
+    background-repeat: no-repeat; /*设置背景图不重复*/
+  }
 
-#header {
-  display: flex;
-}
-#navbar_img img {
-  border-radius: 50%;
-  position: absolute;
-  top: 30px;
-  left: 240px;
-  height: 200px;
-  width: 200px;
-}
+  #header {
+    display: flex;
+  }
 
-#navbar_motto {
-  font-family: 楷体;
-  font-size: 25px;
-  color: rgb(34, 8, 66);
-  position: absolute;
-  top: 100px;
-  left: 580px;
-}
+  #navbar_img img {
+    border-radius: 50%;
+    position: absolute;
+    top: 30px;
+    left: 160px;
+    height: 120px;
+    width: 120px;
+  }
+
+  #navbar_motto {
+    width: 420px;
+    font-family: 楷体;
+    font-size: 25px;
+    color: rgb(34, 8, 66);
+    position: absolute;
+    top: 50px;
+    left: 450px;
+  }
+
+  #narbar_link {
+    width: 200px;
+    position: relative;
+    margin-top: 15%;
+    /*margin-left: 40%;*/
+    display: flex;
+    flex-direction: column;
+    margin-left: 160px;
+    font-family: "Arial Black";
+    font-size: 25px;
+    text-shadow: 0 0 20px #fdec84,
+    10px -10px 30px #ffae35,
+    20px -20px 40px #ec760c,
+    -20px -60px 50px #cd4607,
+    0px -80px 60px #973717,
+    10px -40px 70px #451b0e;
+  }
+
+  .link_content {
+    display: flex;
+    text-align: center;
+    font-family: 楷体;
+    font-weight: bold;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 30px;
+  }
+
+  #narbar_link div img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+  }
+
+  #content-view {
+    width: 60%;
+    height: 60%;
+    position: relative;
+    top: -250px;
+    left: 450px;
+  }
 </style>

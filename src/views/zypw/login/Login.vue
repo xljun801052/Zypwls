@@ -4,7 +4,7 @@
     <div id="loginPage">
       <Card style="width: 320px" class="loginform">
         <div style="text-align: center" class="logincontent">
-          <img src="@/assets/imgs/theme/artisanLee.png" />
+          <img src="@/assets/imgs/theme/artisanLee.png"/>
           <Form ref="formInline" :model="formInline" :rules="ruleInline" inline>
             <FormItem prop="user">
               <Input
@@ -26,7 +26,8 @@
             </FormItem>
             <FormItem>
               <Button type="primary" @click="handleSubmit('formInline')"
-                >登录</Button
+              >登录
+              </Button
               >
             </FormItem>
           </Form>
@@ -37,68 +38,67 @@
 </template>
 
 <script>
-export default {
-  name: "Login",
-  data() {
-    return {
-      formInline: {
-        user: "",
-        password: "",
-      },
-      ruleInline: {
-        user: [
-          {
-            required: true,
-            message: "Please fill in the user name",
-            trigger: "blur",
-          },
-        ],
-        password: [
-          {
-            required: true,
-            message: "Please fill in the password.",
-            trigger: "blur",
-          },
-          {
-            type: "string",
-            min: 6,
-            message: "The password length cannot be less than 6 bits",
-            trigger: "blur",
-          },
-        ],
-      },
-    };
-  },
-  methods: {
-    handleSubmit(name) {
-      this.$refs[name].validate((valid) => {
-        if (valid) {
-          this.$Message.success("Success!");
-        } else {
-          this.$Message.error("Fail!");
-        }
-      });
+  export default {
+    name: "Login",
+    data() {
+      return {
+        formInline: {
+          user: "",
+          password: "",
+        },
+        ruleInline: {
+          user: [
+            {
+              required: true,
+              message: "Please fill in the user name",
+              trigger: "blur",
+            },
+          ],
+          password: [
+            {
+              required: true,
+              message: "Please fill in the password.",
+              trigger: "blur",
+            },
+            {
+              type: "string",
+              min: 6,
+              message: "The password length cannot be less than 6 bits",
+              trigger: "blur",
+            },
+          ],
+        },
+      };
     },
-  },
-};
+    methods: {
+      handleSubmit(name) {
+        this.$refs[name].validate((valid) => {
+          if (valid) {
+            this.$Message.success("Success!");
+          } else {
+            this.$Message.error("Fail!");
+          }
+        });
+      },
+    },
+  };
 </script>
 
 <style scoped>
-#loginPage {
-  position: relative;
-  top: 140px;
-  left: 75px;
-}
-img {
-  border-radius: 50%;
-  height: 50px;
-  width: 50px;
-  margin-bottom: 20px;
-}
+  /*#loginPage {*/
+  /*  position: relative;*/
+  /*  top: 140px;*/
+  /*  left: 75px;*/
+  /*}*/
 
-.loginform {
-  background: rgba(233, 232, 232, 0.8);
-  margin-top: 150px;
-  margin-left: 100px;
-}
+  img {
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    margin-bottom: 20px;
+  }
+
+  .loginform {
+    background: rgba(233, 232, 232, 0.4);
+  }
 </style>
