@@ -15,13 +15,12 @@
             v-for="(item, index) in allPosts"
             :key="index"
             :item="item"
-            @click.native="showContentDetails"
           >
           </HomepageItem>
         </div>
 
         <!--分页部分-->
-        <Pagehelper class="pagehelper"></Pagehelper>
+        <Pagehelper class="pagehelper" :total="totalActicleCount" :pageSize="pageSize"/>
       </Scroll>
     </div>
   </div>
@@ -29,9 +28,10 @@
 
 <script>
   //使用懒加载模式导入组件：当路由被访问时才加载对应的代码，这样就更加高效率了
+  import homepageRequest from "../../../network/homepageRequest";
+
   const HomepageItem = () => import("./childComps/HomepageItem");
-  const Pagehelper = () => import("components/common/Pagehelper")
-  // const Scroll = () => import("components/common/Scroll")
+  const Pagehelper = () => import("components/common/Pagehelper");
   import Scroll from "../../../components/common/Scroll";
 
   export default {
@@ -43,140 +43,28 @@
     },
     data() {
       return {
-        message: "我是homepage的message",
-        currentData: 0,
-        allPosts: [
-          {
-            title: "三体首发",
-            tag: "美妆生活",
-            time: "2020-06-23 14:53:23",
-            content:
-              "最近在项目部署后发现在tomcat窗口中打印出的日志中中文是乱码的",
-            readTimes: 10035,
-            detailURL: "http://www.baidu.com",
-            id: 111,
-          },
-          {
-            title: "黑暗森林",
-            tag: "小厨娘生活",
-            time: "2020-06-23 14:27:35",
-            content:
-              "因为在开发环境中是没有乱码出现的，所以判断是因为服务器编码导致日志在窗口中显示成了乱码",
-            readTimes: 15237,
-            detailURL: "http://www.bilibili.com",
-            id: 222,
-          },
-          {
-            title: "死神永生",
-            tag: "小仙女日常",
-            time: "2020-06-23 17:34:24",
-            content:
-              "还好日志文件中打印出来的中文不是乱码，但是窗口中老显示乱码也是要解决的，解决方案如下：",
-            readTimes: 18772,
-            detailURL: "http://www.google.com",
-            id: 333,
-          },
-          {
-            title: "三体首发",
-            tag: "美妆生活",
-            time: "2020-06-23 14:53:23",
-            content:
-              "最近在项目部署后发现在tomcat窗口中打印出的日志中中文是乱码的",
-            readTimes: 10035,
-            detailURL: "http://www.baidu.com",
-            id: 111,
-          },
-          {
-            title: "黑暗森林",
-            tag: "小厨娘生活",
-            time: "2020-06-23 14:27:35",
-            content:
-              "因为在开发环境中是没有乱码出现的，所以判断是因为服务器编码导致日志在窗口中显示成了乱码",
-            readTimes: 15237,
-            detailURL: "http://www.bilibili.com",
-            id: 222,
-          },
-          {
-            title: "死神永生",
-            tag: "小仙女日常",
-            time: "2020-06-23 17:34:24",
-            content:
-              "还好日志文件中打印出来的中文不是乱码，但是窗口中老显示乱码也是要解决的，解决方案如下：",
-            readTimes: 18772,
-            detailURL: "http://www.google.com",
-            id: 333,
-          }, {
-            title: "三体首发",
-            tag: "美妆生活",
-            time: "2020-06-23 14:53:23",
-            content:
-              "最近在项目部署后发现在tomcat窗口中打印出的日志中中文是乱码的",
-            readTimes: 10035,
-            detailURL: "http://www.baidu.com",
-            id: 111,
-          },
-          {
-            title: "黑暗森林",
-            tag: "小厨娘生活",
-            time: "2020-06-23 14:27:35",
-            content:
-              "因为在开发环境中是没有乱码出现的，所以判断是因为服务器编码导致日志在窗口中显示成了乱码",
-            readTimes: 15237,
-            detailURL: "http://www.bilibili.com",
-            id: 222,
-          },
-          {
-            title: "死神永生",
-            tag: "小仙女日常",
-            time: "2020-06-23 17:34:24",
-            content:
-              "还好日志文件中打印出来的中文不是乱码，但是窗口中老显示乱码也是要解决的，解决方案如下：",
-            readTimes: 18772,
-            detailURL: "http://www.google.com",
-            id: 333,
-          }, {
-            title: "三体首发",
-            tag: "美妆生活",
-            time: "2020-06-23 14:53:23",
-            content:
-              "最近在项目部署后发现在tomcat窗口中打印出的日志中中文是乱码的",
-            readTimes: 10035,
-            detailURL: "http://www.baidu.com",
-            id: 111,
-          },
-          {
-            title: "黑暗森林",
-            tag: "小厨娘生活",
-            time: "2020-06-23 14:27:35",
-            content:
-              "因为在开发环境中是没有乱码出现的，所以判断是因为服务器编码导致日志在窗口中显示成了乱码",
-            readTimes: 15237,
-            detailURL: "http://www.bilibili.com",
-            id: 222,
-          },
-          {
-            title: "死神永生",
-            tag: "小仙女日常",
-            time: "2020-06-23 17:34:24",
-            content:
-              "还好日志文件中打印出来的中文不是乱码，但是窗口中老显示乱码也是要解决的，解决方案如下：",
-            readTimes: 18772,
-            detailURL: "http://www.google.com",
-            id: 333,
-          },
-        ],
+        allPosts: [],// 帖子
+        totalActicleCount:0, // 帖子总数量
+        pageSize:3, // 分页后每页大小，默认为5篇一页
       };
     },
-    methods: {
-      
-    },
+    methods: {},
     created() {
       // 组件创建的时候去请求数据，保存在data中
+      homepageRequest({
+        url: "/article/detail/all",
+        method: "get",
+      }).then(res => {
+        console.log(res);
+        this.allPosts = res;
+        this.totalActicleCount = res.length
+      })
     },
     mounted() {
-      this.$nextTick(()=>{
-        console.log("---");
+      this.$nextTick(() => {
+        // console.log(this.$refs.homepageScroll);
         this.$refs.homepageScroll.refresh()
+        console.log("homepage-scrollHeight刷新完毕...")
       })
     }
   };

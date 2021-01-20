@@ -13,3 +13,5 @@ Q2:利用vue展示文章详情(以markdown格式为例)
 
 Q3：制作一个富文本框，Vue.js如何实现？
     A1：https://blog.csdn.net/qq_24147051/article/details/83755154
+
+Q4：我这里使用的滚动是Better-scroll的PC端滚动，但是有一个问题，在不同的组件显示中，我需要不同高度的滚动区域，不能写死在Scroll组件中，那如何个性化定制呢？

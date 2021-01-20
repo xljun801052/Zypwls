@@ -40,7 +40,7 @@
       </div>
       <div>
         <!--router-view会替换掉展示组件的第一层根标签-->
-        <router-view id="content-view"></router-view>
+        <router-view id="content-view" class="view"></router-view>
       </div>
       <!--<div id="search">
           <el-input

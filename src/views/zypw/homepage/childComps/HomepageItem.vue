@@ -1,23 +1,21 @@
 <template>
   <div id="homepageItem">
     <!--帖子标题-->
-    <router-link
-      class="title"
-      :to="'/homepageDetail/' + testData"
-      tag="button"
+    <div
+      class="article_title"
       @click="showContentDetails"
     >
       {{ item.title }}
-    </router-link>
+    </div>
 
     <!--帖子的分类、标签、发布时间、阅读数等信息-->
     <div class="abstract">
-      分类:{{ index + 1 }}||标签：{{ item.tag }}||发布于:{{item.time}}||阅读数:{{ item.readTimes }}
+      分类:生活感悟||标签：{{ item.tag }}||发布于:{{item.time}}||阅读数:{{ item.readTimes }}
     </div>
 
     <!--帖子内容信息-->
     <div>
-      <div class="contentAbstract">{{ item.content }}</div>
+      <div class="contentAbstract" v-html="item.content"></div>
       <div class="readMore"><a href="javascript:void(0);" @click="showContentDetails(item.id)">阅读更多</a></div>
     </div>
 
@@ -46,7 +44,7 @@
 </script>
 
 <style scoped>
-  .title {
+  .article_title {
     font-family: 楷体;
     font-weight: bold;
     font-size: 20px;
@@ -65,11 +63,12 @@
   /*文本超过限制时用...进行显示代替*/
   .contentAbstract {
     font-family: 楷体;
-    font-size: 18px;
+    font-size: 10px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    width: 350px;
+    height: 50px;
+    width: 400px;
     color: #2dfdaa;
   }
 
