@@ -64,12 +64,9 @@
         this.article = res;
       })
     },
-    mounted() {
-      this.$nextTick(() => {
-        this.$refs.articleDetailScroll.refresh()
-      })
-      console.log("article-scrollHeight刷新完毕...")
-    }
+    updated() {
+      this.$refs.articleDetailScroll.refresh()
+    },
   };
 </script>
 

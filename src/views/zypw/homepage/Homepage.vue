@@ -44,8 +44,8 @@
     data() {
       return {
         allPosts: [],// 帖子
-        totalActicleCount:0, // 帖子总数量
-        pageSize:3, // 分页后每页大小，默认为5篇一页
+        totalActicleCount: 0, // 帖子总数量
+        pageSize: 3, // 分页后每页大小，默认为5篇一页
       };
     },
     methods: {},
@@ -55,17 +55,24 @@
         url: "/article/detail/all",
         method: "get",
       }).then(res => {
-        console.log(res);
+        // console.log(res);
         this.allPosts = res;
         this.totalActicleCount = res.length
       })
     },
     mounted() {
-      this.$nextTick(() => {
-        // console.log(this.$refs.homepageScroll);
-        this.$refs.homepageScroll.refresh()
-        console.log("homepage-scrollHeight刷新完毕...")
-      })
+      // setTimeout(() => {
+      //   console.log(this.$refs.homepageScroll.scrollHeight);
+      //   this.$refs.homepageScroll.refresh()
+      // }, 3000)
+      // this.$nextTick(() => {
+      //
+      //   // console.log("homepage-scrollHeight刷新完毕...")
+      // })
+    },
+    updated() {
+      // 因为我这里是静态资源，所以可以不用抖动处理，直接刷新滚动区域高度
+      this.$refs.homepageScroll.refresh()
     }
   };
 </script>
