@@ -88,5 +88,6 @@
     right: 0px;
     height: 400px;
     overflow: hidden;
+    border-radius: 15px;
   }
 </style>

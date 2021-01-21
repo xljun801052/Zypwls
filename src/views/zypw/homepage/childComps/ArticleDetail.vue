@@ -1,19 +1,46 @@
 <template>
   <div>
     <Scroll ref="articleDetailScroll">
-
       <div id="articleDetail">
         <!-- 文章详情部分 -->
         <div>
+          <Back class="backItem" />
           <h2 class="article_title">{{ article.title }}</h2>
-          <Divider/>
+          <Divider />
           <div class="article_readAndCollectInfo">
             <!-- <span>发布时间: {{ article.pubTime }}</span> -->
-            <span class="article_readTimes">阅读数: {{ article.readTimes }}</span>
-            <span class="article_collectTimes">收藏数量: {{ article.collectTimes }}</span>
+            <span class="article_readTimes"
+              >阅读数: {{ article.readTimes }}</span
+            >
+            <span class="article_collectTimes"
+              >收藏数量: {{ article.collectTimes }}</span
+            >
           </div>
           <div class="article_content">
             <p v-html="article.content"></p>
+          </div>
+        </div>
+        <Divider />
+
+        <!-- 历史评论展示 -->
+        <div class="historyCommentArea">
+          <div class="commentIndicator">
+            <img src="~assets/imgs/homepage/comment.png" alt="" />
+            <div>
+              人生好比白驹过隙 不如小憩评论一句
+              <img src="~assets/imgs/emotions/2018new_aini_org.png" alt="" />
+            </div>
+          </div>
+
+          <div v-for="(commentItem, index) in historyComments" :key="index">
+            <Comment
+              :userAvatar="commentItem.userAvatar"
+              :username="commentItem.username"
+              :commentContent="commentItem.commentContent"
+              :commentTime="commentItem.commentTime"
+              :commentFavoriteCount="commentItem.commentFavoriteCount"
+              :commentReplyCount="commentItem.commentReplyCount"
+            />
           </div>
         </div>
 
@@ -24,7 +51,7 @@
             <Button type="primary" class="commentHandle">爷,说两句</Button>
             <Button type="dashed" class="commentHandle">缄默不言</Button>
           </div>
-          <div>{{comment}}</div>
+          <div>{{ comment }}</div>
         </div>
       </div>
     </Scroll>
@@ -32,83 +59,123 @@
 </template>
 
 <script>
-  import {VueEditor, Quill} from "vue2-editor";
-  import homepageRequest from "../../../../network/homepageRequest";
+import { VueEditor, Quill } from "vue2-editor";
+import homepageRequest from "../../../../network/homepageRequest";
 
-  import Scroll from "../../../../components/common/Scroll";
+import Back from "../../../../components/common/Back";
+import Scroll from "../../../../components/common/Scroll";
+import Comment from "../../../../components/content/Comment";
 
-  export default {
-    name: "ArticleDetail",
-    components: {
-      VueEditor,
-      Scroll,
-    },
-    data() {
-      return {
-        aId: "",
-        comment: "",
-        article: {
-          title: "",
-          readTimes: 0,
-          collectTimes: 0,
-          content: ""
-        },
-      };
-    },
-    created() {
-      this.aId = this.$route.params.id;
-      homepageRequest({
-        url: "/article/detail/" + this.aId,
-        method: "get",
-      }).then(res => {
-        this.article = res;
-      })
-    },
-    updated() {
-      this.$refs.articleDetailScroll.refresh()
-    },
-  };
+export default {
+  name: "ArticleDetail",
+  components: {
+    VueEditor,
+    Scroll,
+    Back,
+    Comment,
+  },
+  data() {
+    return {
+      aId: "",
+      historyComments: [],
+      comment: "",
+      article: {
+        title: "",
+        readTimes: 0,
+        collectTimes: 0,
+        content: "",
+      },
+    };
+  },
+  created() {
+    this.aId = this.$route.params.id;
+
+    // 获取文章详情数据
+    homepageRequest({
+      url: "/article/detail/" + this.aId,
+      method: "get",
+    }).then((res) => {
+      this.article = res;
+    });
+
+    // 获取历史评论信息数据
+    homepageRequest({
+      url: "/article/comments/" + this.aId,
+      method: "get",
+    }).then((res) => {
+      this.historyComments = res;
+    });
+  },
+  updated() {
+    this.$refs.articleDetailScroll.refresh();
+  },
+};
 </script>
 
 <style scoped>
-  #articleDetail {
-    background: rgba(192, 243, 134, 0.8);
-    border-radius: 20px;
-  }
+.backItem {
+  padding-top: 15px;
+  padding-left: 20px;
+}
 
-  .article_title {
-    padding-top: 15px;
-    text-align: center;
-  }
+#articleDetail {
+  background: rgba(192, 243, 134, 0.8);
+  border-radius: 5px;
+}
 
-  .article_readAndCollectInfo {
-    display: flex;
-    justify-content: flex-end;
-  }
+.article_title {
+  padding-top: 10px;
+  text-align: center;
+  font-size: 30px;
+}
 
-  #articleDetail span {
-    margin-top: -10px;
-    margin-left: 10px;
-    margin-right: 10px;
-    font-size: 12px;
-    color: #121514;
-  }
+.article_readAndCollectInfo {
+  display: flex;
+  justify-content: flex-end;
+}
 
-  .releaseCommentArea {
-    display: flex;
-    flex-direction: column;
-    background: rgba(255, 255, 255, 0.5);
-  }
+#articleDetail span {
+  margin-top: -10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  font-size: 12px;
+  color: #121514;
+}
 
-  .commentInfoClick {
-    padding-top: 10px;
-    padding-bottom: 10px;
-    display: flex;
-    justify-content: space-evenly;
-  }
+.commentIndicator {
+  display: flex;
+  align-items: baseline;
+  font-family: 楷体;
+  font-size: 22px;
+  font-weight: bolder;
+  color: red;
+}
 
-  .commentHandle {
-    font-size: 15px;
-    font-family: 楷体;
-  }
+.commentIndicator img {
+  height: 20px;
+  width: 20px;
+  margin-right: 5px;
+}
+
+.historyCommentArea {
+  /* background:rgba(100,50,50,0.4);   */
+}
+
+.releaseCommentArea {
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.commentInfoClick {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.commentHandle {
+  font-size: 15px;
+  font-family: 楷体;
+}
 </style>
