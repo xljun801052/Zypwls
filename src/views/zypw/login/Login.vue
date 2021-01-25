@@ -4,7 +4,7 @@
     <div id="loginPage">
       <Card style="width: 320px" class="loginform">
         <div style="text-align: center" class="logincontent">
-          <img src="@/assets/imgs/theme/artisanLee.png"/>
+          <img src="@/assets/imgs/theme/artisanLee.png" />
           <Form ref="formInline" :model="formInline" :rules="ruleInline" inline>
             <FormItem prop="user">
               <Input
@@ -26,8 +26,13 @@
             </FormItem>
             <FormItem>
               <Button type="primary" @click="handleSubmit('formInline')"
-              >登录
-              </Button
+                >登录</Button
+              >
+              <Button
+                type="default"
+                @click="handleReset('formInline')"
+                style="margin-left: 8px"
+                >重置</Button
               >
             </FormItem>
           </Form>
@@ -38,67 +43,102 @@
 </template>
 
 <script>
-  export default {
-    name: "Login",
-    data() {
-      return {
-        formInline: {
-          user: "",
-          password: "",
-        },
-        ruleInline: {
-          user: [
-            {
-              required: true,
-              message: "Please fill in the user name",
-              trigger: "blur",
-            },
-          ],
-          password: [
-            {
-              required: true,
-              message: "Please fill in the password.",
-              trigger: "blur",
-            },
-            {
-              type: "string",
-              min: 6,
-              message: "The password length cannot be less than 6 bits",
-              trigger: "blur",
-            },
-          ],
-        },
-      };
-    },
-    methods: {
-      handleSubmit(name) {
-        this.$refs[name].validate((valid) => {
-          if (valid) {
-            this.$Message.success("Success!");
-          } else {
-            this.$Message.error("Fail!");
-          }
-        });
+import axios from "axios";
+export default {
+  name: "Login",
+  data() {
+    return {
+      formInline: {
+        user: "",
+        password: "",
       },
+      ruleInline: {
+        user: [
+          {
+            required: true,
+            message: "Please fill in the user name",
+            trigger: "blur",
+          },
+        ],
+        password: [
+          {
+            required: true,
+            message: "Please fill in the password.",
+            trigger: "blur",
+          },
+          {
+            type: "string",
+            min: 6,
+            message: "The password length cannot be less than 6 bits",
+            trigger: "blur",
+          },
+        ],
+      },
+    };
+  },
+  methods: {
+    handleSubmit(name) {
+      // 表单数据验证
+      this.$refs[name].validate((valid) => {
+        if (valid) {
+          this.$Message.success("Success!");
+        } else {
+          this.$Message.error("Fail!");
+        }
+      });
+      console.log("ready to send axios。。。");
+      // 发送axios请求进行登录
+      axios({
+        baseURL: "http://127.0.0.1:12019/login",
+        method: "POST",
+        timeout: 3000,
+        headers: {
+          "Content-type": "application/json",
+        },
+        // data: JSON.stringify({
+        //   username: this.formInline.user,
+        //   password: this.formInline.password,
+        // }),
+        data: {
+          username: this.formInline.user,
+          password: this.formInline.password,
+        },
+      })
+        .then((res) => {
+          if (res.data.status == 200) {
+            // 登录成功，将token写到localStroage中
+            window.localStorage.setItem("token", res.data.token);
+            alert(res.data.msg)
+          }else{
+            alert(res.data.msg)
+          }
+        })
+        .catch((res) => {
+          alert(res.data.msg)
+        });
     },
-  };
+    handleReset(name) {
+      this.$refs[name].resetFields();
+    },
+  },
+};
 </script>
 
 <style scoped>
-  /*#loginPage {*/
-  /*  position: relative;*/
-  /*  top: 140px;*/
-  /*  left: 75px;*/
-  /*}*/
+/*#loginPage {*/
+/*  position: relative;*/
+/*  top: 140px;*/
+/*  left: 75px;*/
+/*}*/
 
-  img {
-    border-radius: 50%;
-    height: 50px;
-    width: 50px;
-    margin-bottom: 20px;
-  }
+img {
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  margin-bottom: 20px;
+}
 
-  .loginform {
-    background: rgba(233, 232, 232, 0.4);
-  }
+.loginform {
+  background: rgba(233, 232, 232, 0.4);
+}
 </style>
