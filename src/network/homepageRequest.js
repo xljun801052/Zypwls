@@ -2,10 +2,17 @@ import axios from "axios";
 
 export default function homepageRequest(config) {
 
+  // 先从localStroage中获取token，放在请求头中
+  let token = window.localStorage.getItem("token")
+  console.log(token)
+
   // 创建axios实例对象
   const axiosInstance = axios.create({
-    baseURL: "http://127.0.0.1:12020",
-    timeout: "5000",
+    baseURL: "http://127.0.0.1:12019",
+    timeout: "120000",
+    headers:{
+      token
+    }
   })
 
   // 定制请求拦截器

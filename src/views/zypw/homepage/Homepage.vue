@@ -6,7 +6,7 @@
       <div id="homepage-title">
         <span>小日春和-随笔</span>
       </div>
-      
+
       <!--设置局部滚动-->
       <Scroll ref="homepageScroll">
         <!-- homepage的内容部分 -->
@@ -58,7 +58,11 @@ export default {
     // 组件创建的时候去请求数据，保存在data中
     homepageRequest({
       url: "/article/detail/all",
-      method: "get",
+      method: "post",
+      // 避免请求体为空，导致后台无法获取到requestBody,从而无法修改其内容将userId添加进去
+      data:{
+        'aaa':'bbb'
+      }
     }).then((res) => {
       // console.log(res);
       this.allPosts = res;
