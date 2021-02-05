@@ -3,7 +3,7 @@ import axios from "axios";
 export default function homepageRequest(config) {
 
   // 先从localStroage中获取token，放在请求头中
-  let token = window.localStorage.getItem("token")
+  let access_token = window.localStorage.getItem("access_token")
   console.log(token)
 
   // 创建axios实例对象
@@ -11,7 +11,7 @@ export default function homepageRequest(config) {
     baseURL: "http://127.0.0.1:12019",
     timeout: "120000",
     headers:{
-      token
+      access_token
     }
   })
 

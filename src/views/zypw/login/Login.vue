@@ -107,7 +107,8 @@ export default {
         .then((res) => {
           if (res.data.status == 200) {
             // 登录成功，将token写到localStroage中
-            window.localStorage.setItem("token", res.data.token);
+            window.localStorage.setItem("access_token", res.data.token);
+            this.$router.push("/homepage")
             alert(res.data.msg)
           }else{
             alert(res.data.msg)
