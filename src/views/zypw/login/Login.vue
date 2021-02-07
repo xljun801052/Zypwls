@@ -86,6 +86,7 @@ export default {
           this.$Message.error("Fail!");
         }
       });
+      // console.log("ready to send axios。。。");
       // 发送axios请求进行登录
       axios({
         baseURL: "http://127.0.0.1:12019/login",
@@ -104,15 +105,19 @@ export default {
         },
       })
         .then((res) => {
-          if (res.data.status == 200) {
-            // 登录成功，将token写到localStroage中
-            window.localStorage.setItem("token", res.data.token);
+          // 登录成功，将token写到localStroage中
+          // console.log("res的内容："+res.data.date)
+          if (res.data.code == 200) {
+            // axios自己会封装一层data！
+            window.localStorage.setItem("access_token", res.data.data.access_token);
+            this.$router.push("/homepage")
             alert(res.data.msg)
           }else{
             alert(res.data.msg)
           }
         })
         .catch((res) => {
+          console.log(res.data)
           alert(res.data.msg)
         });
     },

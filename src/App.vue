@@ -9,6 +9,10 @@
         >请看我头戴簪花,一路走来一路盛开, 频频遗漏一些,又深陷风霜雨雪的感动...
         </span>
       </div>
+      <!--退出登录-->
+      <div id="logout_img" @click="logout">
+        <img src="~assets/imgs/utils/logout.png">
+      </div>
       <!-- <Divider /> -->
       <!-- <div class="header-col2">
           <div class="grid-content bg-purple-light">Motto</div>
@@ -58,6 +62,8 @@
 </template>
 
 <script>
+  import homepageRequest from "./network/homepageRequest";
+
   export default {
     name: "App",
     data() {
@@ -65,6 +71,34 @@
     },
     created() {
 
+    },
+    methods: {
+      logout() {
+        // 账户退出
+        homepageRequest({
+          url: "/logout",
+          method: "post",
+          headers: {
+            "Content-type": "application/json",
+          },
+          data: {
+            "xxx": "yyy"
+          }
+        }).then((res) => {
+          // todo:这里的取值时res.code可是登录的地方是res.data.code！！！所以这个到底data是不是算axios封装的？什么时候有什么时候没有？？？
+          if (res.code = 216) {
+            // 删除本地access_token
+            window.localStorage.removeItem("access_token");
+            alert(res.msg);
+            this.$router.push("/")
+          } else {
+            alert(res.msg);
+          }
+        }).catch((res) => {
+          alert("退出异常~~");
+        });
+
+      }
     }
   };
 </script>
@@ -75,7 +109,7 @@
     height: 100vh;
     width: 100%;
     overflow: hidden;
-    background-image: url("~@/assets/imgs/background/bgimg2.jpg"); /*css中使用别名'~@'*/
+    /*background-image: url("~@/assets/imgs/background/bgimg1.jpg"); !*css中使用别名'~@'*!*/
     background-size: cover; /*设置背景图充满屏幕*/
     background-repeat: no-repeat; /*设置背景图不重复*/
   }
@@ -144,5 +178,13 @@
     top: -250px;
     left: 450px;
     /* border: 1px solid deeppink; */
+  }
+
+  #logout_img img {
+    height: 32px;
+    width: 32px;
+    position: absolute;
+    right: 50px;
+    top: 50px;
   }
 </style>

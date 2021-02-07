@@ -6,7 +6,7 @@
       <div id="homepage-title">
         <span>小日春和-随笔</span>
       </div>
-      
+
       <!--设置局部滚动-->
       <Scroll ref="homepageScroll">
         <!-- homepage的内容部分 -->
@@ -60,11 +60,9 @@ export default {
     homepageRequest({
       url: "/article/detail/all",
       method: "post",
-      headers:{
-        token
-      },
+      // 避免请求体为空，导致后台无法获取到requestBody,从而无法修改其内容将userId添加进去
       data:{
-        "bs":"aaa"
+        'aaa':'bbb'
       }
     }).then((res) => {
       // console.log(res);

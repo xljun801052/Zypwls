@@ -34,12 +34,14 @@
 
           <div v-for="(commentItem, index) in historyComments" :key="index">
             <Comment
+              :id = "commentItem.id"
               :userAvatar="commentItem.userAvatar"
               :username="commentItem.username"
               :commentContent="commentItem.commentContent"
               :commentTime="commentItem.commentTime"
               :commentFavoriteCount="commentItem.commentFavoriteCount"
               :commentReplyCount="commentItem.commentReplyCount"
+              :isCurrentUserFavorite="commentItem.isCurrentUserFavorite"
             />
           </div>
         </div>
@@ -93,7 +95,10 @@ export default {
     // 获取文章详情数据
     homepageRequest({
       url: "/article/detail/" + this.aId,
-      method: "get",
+      method: "post",
+      data:{
+        "aaa":"abc"
+      }
     }).then((res) => {
       this.article = res;
     });
@@ -101,7 +106,10 @@ export default {
     // 获取历史评论信息数据
     homepageRequest({
       url: "/article/comments/" + this.aId,
-      method: "get",
+      method: "post",
+      data:{
+        "aaa":"abd"
+      }
     }).then((res) => {
       this.historyComments = res;
     });

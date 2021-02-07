@@ -9,14 +9,15 @@ import VueRouter from 'vue-router'
 // import App from '../App'
 // import HomepageDetail from "../components/content/HomepageDetail"
 //懒加载模式引入
-const Login=()=>import('../views/zypw/login/Login.vue')
-const Homepage=()=>import('../views/zypw/homepage/Homepage.vue')
-const Pictures=()=>import('../views/zypw/pictures/Pictures.vue')
-const Profile=()=>import('../views/zypw/profile/Profile.vue')
-const Vlogs=()=>import('../views/zypw/v-logs/Vlogs.vue')
-const Article=()=>import('../views/xlyspw/article/Article.vue')
-const Tecs=()=>import('../views/xlyspw/tecs/Tecs.vue')
-const ArticleDetail=()=>import('../views/zypw/homepage/childComps/ArticleDetail')
+const Login = () => import('../views/zypw/login/Login.vue')
+const Homepage = () => import('../views/zypw/homepage/Homepage.vue')
+const Pictures = () => import('../views/zypw/pictures/Pictures.vue')
+const Profile = () => import('../views/zypw/profile/Profile.vue')
+const Vlogs = () => import('../views/zypw/v-logs/Vlogs.vue')
+const Article = () => import('../views/xlyspw/article/Article.vue')
+const Tecs = () => import('../views/xlyspw/tecs/Tecs.vue')
+const ArticleDetail = () => import('../views/zypw/homepage/childComps/ArticleDetail')
+const CommentDetail = () => import('../components/content/CommentDetail')
 
 Vue.use(VueRouter)
 
@@ -65,9 +66,14 @@ const routes = [
     name: 'ArticleDetail',
     component: ArticleDetail
   },
+  {
+    path: '/subComments/:cid',
+    name: 'SubComments',
+    component: CommentDetail
+  },
+
 
 ]
-
 
 
 const router = new VueRouter({
