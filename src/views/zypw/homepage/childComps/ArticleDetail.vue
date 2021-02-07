@@ -34,7 +34,7 @@
 
           <div v-for="(commentItem, index) in historyComments" :key="index">
             <Comment
-              :id = "commentItem.id"
+              :id="commentItem.id"
               :userAvatar="commentItem.userAvatar"
               :username="commentItem.username"
               :commentContent="commentItem.commentContent"
@@ -96,9 +96,9 @@ export default {
     homepageRequest({
       url: "/article/detail/" + this.aId,
       method: "post",
-      data:{
-        "aaa":"abc"
-      }
+      data: {
+        aaa: "abc",
+      },
     }).then((res) => {
       this.article = res;
     });
@@ -107,9 +107,9 @@ export default {
     homepageRequest({
       url: "/article/comments/" + this.aId,
       method: "post",
-      data:{
-        "aaa":"abd"
-      }
+      data: {
+        aaa: "abd",
+      },
     }).then((res) => {
       this.historyComments = res;
     });

@@ -67,7 +67,7 @@ const routes = [
     component: ArticleDetail
   },
   {
-    path: '/subComments/:cid',
+    path: '/subComments',
     name: 'SubComments',
     component: CommentDetail
   },

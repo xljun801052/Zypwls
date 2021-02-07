@@ -21,9 +21,8 @@
       <div class="commentTime">{{ cTimeAfterTransform }}</div>
 
       <!-- 评论回复数 -->
-      <div class="commentReplyCount" @click="showSubComment">{{ commentReplyCount }}回复</div>
+      <div class="commentReplyCount" @click="replySubComment">{{ commentReplyCount }}回复</div>
     </div>
-    <Divider dashed class="seperateLine"/>
   </div>
 </template>
 
@@ -99,22 +98,11 @@
       },
     },
     methods:{
-      // 显示子评论详情
-      showSubComment(){
-        this.$router.push({
-          path:"/subComments",
-          query:{
-            id: this.id,
-            userAvatar:this.userAvatar,
-            username:this.username,
-            commentContent:this.commentContent,
-            commentTime:this.commentTime,
-            commentFavoriteCount:this.commentFavoriteCount,
-            commentReplyCount:this.commentReplyCount
-          }
-        });
+      // 对子评论进行恢复
+      replySubComment(){
+        alert("进行回复...")
       }
-
+      
     },
   };
 </script>
