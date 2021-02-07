@@ -4,7 +4,7 @@ export default function homepageRequest(config) {
 
   // 先从localStroage中获取token，放在请求头中
   let access_token = window.localStorage.getItem("access_token")
-  console.log(token)
+  console.log("homepage-access_token:"+access_token)
 
   // 创建axios实例对象
   const axiosInstance = axios.create({

@@ -34,6 +34,7 @@
 
           <div v-for="(commentItem, index) in historyComments" :key="index">
             <Comment
+              :id = "commentItem.id"
               :userAvatar="commentItem.userAvatar"
               :username="commentItem.username"
               :commentContent="commentItem.commentContent"

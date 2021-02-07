@@ -21,16 +21,22 @@
       <div class="commentTime">{{ cTimeAfterTransform }}</div>
 
       <!-- 评论回复数 -->
-      <div class="commentReplyCount">{{ commentReplyCount }}回复</div>
+      <div class="commentReplyCount" @click="showSubComment">{{ commentReplyCount }}回复</div>
     </div>
     <Divider dashed class="seperateLine"/>
   </div>
 </template>
 
 <script>
+  import homepageRequest from "../../network/homepageRequest";
+
   export default {
     name: "Comment",
     props: {
+      id: {
+        type: Number,
+        default: 1,
+      },
       userAvatar: {
         type: String,
         default: null,
@@ -42,7 +48,7 @@
       commentContent: {
         type: String,
         default:
-          "<span>test!测试测试~test!测试测试test!测试测试test!测试测试test!测试测试test!测试测试test!测试测试test!测试测试test!测试测试test!测试测试test!测试测试test!测试测试test!测试测试test!测试测试test!测试测试test!测试测试test!测试测试test!测试测试test!测试测试test!测试测试test!测试测试test!测试测试test!测试测试test!测试测试test!测试测试</span>",
+          "<span>test!测试测试~test!测试测试test!测试测试test!test!测测试测t!测试测试</span>",
       },
       // 注意：这里的commentTime最好改成Date!后续优化
       commentTime: {
@@ -68,6 +74,7 @@
         // 改变一下评论分割线的样式，但是目前没起作用!后面优化一下~
         // seperateLineOrientation: 1,
         // seperateLineSize: "small",
+        parentId:null,
       };
     },
     computed: {
@@ -90,6 +97,12 @@
         }
         return this.commentReleaseTime;
       },
+    },
+    methods:{
+      // 显示子评论详情
+      showSubComment(){
+        this.$router.push("/subComments/" + this.id);
+      }
     },
   };
 </script>
