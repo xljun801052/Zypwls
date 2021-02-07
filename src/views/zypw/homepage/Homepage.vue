@@ -55,10 +55,17 @@ export default {
   },
   methods: {},
   created() {
+    let token = window.localStorage.getItem("token")
     // 组件创建的时候去请求数据，保存在data中
     homepageRequest({
       url: "/article/detail/all",
-      method: "get",
+      method: "post",
+      headers:{
+        token
+      },
+      data:{
+        "bs":"aaa"
+      }
     }).then((res) => {
       // console.log(res);
       this.allPosts = res;

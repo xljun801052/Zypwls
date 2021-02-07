@@ -86,12 +86,11 @@ export default {
           this.$Message.error("Fail!");
         }
       });
-      console.log("ready to send axios。。。");
       // 发送axios请求进行登录
       axios({
         baseURL: "http://127.0.0.1:12019/login",
         method: "POST",
-        timeout: 3000,
+        timeout: 30000,
         headers: {
           "Content-type": "application/json",
         },
