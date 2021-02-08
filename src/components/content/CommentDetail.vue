@@ -13,35 +13,9 @@
           :isCurrentUserFavorite="parentComment.isCurrentUserFavorite"
         />
       </div>
-      <Divider solid class="seperateLine"/>
+      <Divider solid class="seperateLine" />
+
       <!--子评论信息-->
-      <!--<div class="subCommentContent" >
-        &lt;!&ndash; 评论者信息 &ndash;&gt;
-        <div class="commentUserInfo">
-          <img v-if="userAvatar" :src="userAvatar" alt="" class="avatar"/>
-          <img v-else src="~assets/imgs/theme/tutu.png" alt="" class="avatar"/>
-          <div>{{ username }}:</div>
-          &lt;!&ndash; 评论获赞数 &ndash;&gt;
-          <div class="commentFavoriteCount">
-            <img src="~assets/imgs/utils/favorite.png" alt="" :class="{favorite:isCurrentUserFavorite===0?true:false}"/>
-            <div :class="{favoriteC:isCurrentUserFavorite===0?true:false}">{{ commentFavoriteCount }}</div>
-          </div>
-        </div>
-
-        &lt;!&ndash; 评论内容 &ndash;&gt;
-        <div class="commentContent" v-html="commentContent"></div>
-
-        &lt;!&ndash; 评论相关信息 &ndash;&gt;
-        <div class="commentRelatedInfo">
-          &lt;!&ndash; 评论时间 &ndash;&gt;
-          <div class="commentTime">{{ cTimeAfterTransform }}</div>
-
-          &lt;!&ndash; 评论回复数 &ndash;&gt;
-          <div class="commentReplyCount" @click="reply(id)">{{ commentReplyCount }}回复</div>
-        </div>
-        <Divider dashed class="seperateLine"/>
-      </div>-->
-
       <div
         class="allSubComments"
         v-for="(commentItem, index) in allSubComments"
@@ -57,18 +31,18 @@
           :commentFavoriteCount="commentItem.commentFavoriteCount"
           :isCurrentUserFavorite="commentItem.isCurrentUserFavorite"
         />
-        <Divider dashed class="seperateLine"/>
+        <Divider dashed class="seperateLine" />
       </div>
 
       <!-- 发表评论部分 -->
-        <div class="releaseCommentArea">
-          <vue-editor v-model="comment"></vue-editor>
-          <div class="commentInfoClick">
-            <Button type="primary" class="commentHandle">爷,说两句</Button>
-            <Button type="dashed" class="commentHandle">缄默不言</Button>
-          </div>
-          <div>{{ comment }}</div>
+      <div class="releaseCommentArea">
+        <vue-editor v-model="comment"></vue-editor>
+        <div class="commentInfoClick">
+          <Button type="primary" class="commentHandle">爷,说两句</Button>
+          <Button type="dashed" class="commentHandle">缄默不言</Button>
         </div>
+        <div>{{ comment }}</div>
+      </div>
     </Scroll>
   </div>
 </template>

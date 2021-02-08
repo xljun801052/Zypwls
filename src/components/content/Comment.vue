@@ -7,7 +7,7 @@
       <div>{{ username }}:</div>
       <!-- 评论获赞数 -->
       <div class="commentFavoriteCount">
-        <img src="~assets/imgs/utils/favorite.png" alt="" :class="{favorite:isCurrentUserFavorite===0?true:false}"/>
+        <img src="~assets/imgs/utils/favorite.png" alt="" :class="{favorite:isCurrentUserFavorite===0?true:false}" @click="changeFavoriteStatus(id)"/>
         <div :class="{favoriteC:isCurrentUserFavorite===0?true:false}">{{ commentFavoriteCount }}</div>
       </div>
     </div>
@@ -113,8 +113,27 @@
             commentReplyCount:this.commentReplyCount
           }
         });
-      }
+      },
+      changeFavoriteStatus(cid){
+        // 向后台发送请求更改点赞信息
+        homepageRequest({
+          url:"/article/changeFavorite",
+          method:"post",
+          data:{
+            cid:cid
+          }
+        }).then(res=>{
+          // 成功了之后改变点赞状态
+        if(isCurrentUserFavorite==0){
+          this.isCurrentUserFavorite = 1;
+        }else{
+          this.isCurrentUserFavorite = 0;
+        }
+        }).catch(res=>{
+          alert("点赞有点小问题")
+        })
 
+      },
     },
   };
 </script>
